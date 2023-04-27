@@ -23,26 +23,33 @@
         </h:selectOneMenu>
       </h:panelGrid>
       <h:commandButton value="Save" action="#{student.submit}" />
-      <h:commandButton value="Edit" action="edit" />
-      <h:commandButton value="Delete" action="edit" />
+      
     </h:form>
-      <h:dataTable value="#{studentBean.students}" var="student">
-  <h:column>
-    <f:facet name="header">Name</f:facet>
-    #{student.name}
-  </h:column>
-  <h:column>
-    <f:facet name="header">Address</f:facet>
-    #{student.address}
-  </h:column>
-  <h:column>
-    <f:facet name="header">Class</f:facet>
-    #{student.selectedClass}
-  </h:column>
-  <h:column>
-    <f:facet name="header">Subject</f:facet>
-    #{student.selectedSubject}
-  </h:column>
-</h:dataTable>
+    <h:dataTable value="#{student.allStudents}" var="student">
+      <h:column>
+        <f:facet name="header">Name</f:facet>
+        #{student.name}
+      </h:column>
+      <h:column>
+        <f:facet name="header">Address</f:facet>
+        #{student.address}
+      </h:column>
+      <h:column>
+        <f:facet name="header">Class</f:facet>
+        #{student.selectedClass}
+      </h:column>
+      <h:column>
+        <f:facet name="header">Subject</f:facet>
+        #{student.selectedSubject}
+      </h:column>
+        <h:column>
+            <f:facet name="header">Edit</f:facet>
+            <h:commandButton value="Edit" action="edit" />
+        </h:column>
+        <h:column>
+            <f:facet name="header">Delete</f:facet>
+            <h:commandButton value="Delete" action="#{student.delete}" />
+        </h:column>
+    </h:dataTable>
   </h:body>
 </html>

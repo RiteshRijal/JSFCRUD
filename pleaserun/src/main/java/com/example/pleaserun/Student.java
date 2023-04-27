@@ -13,6 +13,7 @@ import java.util.List;
 @RequestScoped
 public class Student implements Serializable {   
     private static final long serialVersionUID = 1L;
+    private String id;
     private String name;
     private String address;
     private String selectedClass;
@@ -25,13 +26,24 @@ public class Student implements Serializable {
         StudentDAO dao = new StudentDAO();
         dao.save(this);
     }
+   public List<Student> getAllStudents() {
+    Showall  dao = new Showall();
+    return dao.getAllStudents();
+}
+   public void delete() {
+        // save student data into database
+        StudentDAO dao = new StudentDAO();
+        dao.delete(this);
+    }
     
     
     public Student() {
         availableClasses = Arrays.asList("Class A", "Class B", "Class C");
         availableSubjects = Arrays.asList("BscCSIT", "BBA", "BBM");
     }
-    
+    public String getId(){
+        return id;
+    }
     public String getAddress() {
         return address;
     }
@@ -46,13 +58,6 @@ public class Student implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-    
-    public String add() {
-        System.out.println("product Inserted");
-        System.out.println("name" + name);
-        System.out.println("address" + address);
-        return "success";
     }
     
     public String getSelectedClass() {
@@ -80,5 +85,10 @@ public class Student implements Serializable {
     }
     public String toString() {
         return "Name: " + name + ", Address: " + address + ", Class: " + selectedClass + ", Subjects: " + selectedSubject;
+    }
+     
+
+    void setId(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

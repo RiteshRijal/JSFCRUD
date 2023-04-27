@@ -7,8 +7,11 @@ package com.example.pleaserun;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -28,7 +31,7 @@ class StudentDAO {
             e.printStackTrace();
             return;
         }
-
+   
         try (Connection conn = DriverManager.getConnection(url, user, password);
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, student.getName());
@@ -40,4 +43,27 @@ class StudentDAO {
             e.printStackTrace();
         }
     }
+    public void delete(Student student) {
+    
+
+    // delete student record from database
+    try (Connection conn = DriverManager.getConnection(url, user, password)) {
+        String sql = "DELETE FROM students WHERE id = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, this.getId());
+        stmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
 }
+
+    private int getId() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+ 
+}
+
+
+
+
+

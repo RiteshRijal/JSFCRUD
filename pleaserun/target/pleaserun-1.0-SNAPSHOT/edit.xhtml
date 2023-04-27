@@ -8,10 +8,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
      <h:body>
-    <h:dataTable value="#{studentBean.students}" var="student">
+    <h:dataTable value="#{student.allStudents}" var="student">
     <h:column>
         <f:facet name="header">Name</f:facet>
-        #{student.name}
+        #{studentDAO.name}
     </h:column>
     <h:column>
         <f:facet name="header">Address</f:facet>
@@ -19,12 +19,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
     </h:column>
     <h:column>
         <f:facet name="header">Class</f:facet>
-        #{student.studentClass}
+        #{student.selectedClass}
     </h:column>
     <h:column>
         <f:facet name="header">Subjects</f:facet>
-        #{student.subjects}
+        #{student.selectedSubject}
     </h:column>
+        
 </h:dataTable>
         </h:body>
 </html>
